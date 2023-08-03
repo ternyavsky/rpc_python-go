@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rweather.proto\"\x1e\n\x0eWeatherRequest\x12\x0c\n\x04\x63ity\x18\x01 \x01(\t\"$\n\x0fWeatherResponse\x12\x11\n\ttemp_info\x18\x02 \x01(\t2:\n\x07Service\x12/\n\ngetWeather\x12\x0f.WeatherRequest\x1a\x10.WeatherResponseB\tZ\x07server/b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rweather.proto\"\x1e\n\x0eWeatherRequest\x12\x0c\n\x04\x63ity\x18\x01 \x01(\t\"$\n\x0fWeatherResponse\x12\x11\n\ttemp_info\x18\x02 \x01(\x02\x32:\n\x07Service\x12/\n\ngetWeather\x12\x0f.WeatherRequest\x1a\x10.WeatherResponseB\tZ\x07server/b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)

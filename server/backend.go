@@ -2,15 +2,24 @@ package server
 
 import (
 	"context"
+	"fmt"
+	"io/ioutil"
 	"log"
 	"net"
 	"net/http"
 
+	"github.com/perimeterx/marshmallow"
 	"google.golang.org/grpc"
 )
 
 type gServer struct {
 	UnimplementedServiceServer
+}
+
+type Main struct {
+	Main struct {
+		Temp float32 `json:"temp"`
+	} `json:"main"`
 }
 
 func (m *gServer) GetWeather(ctx context.Context, request *WeatherRequest) (*WeatherResponse, error) {
@@ -22,7 +31,18 @@ func (m *gServer) GetWeather(ctx context.Context, request *WeatherRequest) (*Wea
 		log.Fatalln(err)
 	}
 	log.Println(req)
-	return &WeatherResponse{TempInfo: req}, nil
+	body, _ := ioutil.ReadAll(req.Body)
+	tempData := Main{}
+
+	fmt.Println(body)
+	result, err := marshmallow.Unmarshal(body, &tempData)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(tempData.Main.Temp)
+
+	fmt.Println(result)
+	return &WeatherResponse{TempInfo: tempData.Main.Temp}, nil
 
 }
 

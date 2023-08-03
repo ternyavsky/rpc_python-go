@@ -6,7 +6,7 @@ message WeatherRequest{
   string city = 1;
 }
 message WeatherResponse {
-  string temp_info = 2;
+  float temp_info = 2;
 }
 
 service Service {
